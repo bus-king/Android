@@ -70,7 +70,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         // image example
         if (iconUrl == null && genre.equals("hip hop")){
-            Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hip);
+            Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hiphop);
             showImageTest(bm, iconImageView);
         }
         else if (iconUrl == null && genre.equals("ballad")){

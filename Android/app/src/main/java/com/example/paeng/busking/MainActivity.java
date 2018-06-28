@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                        switch(menuItem.getItemId()){
+                            case R.id.nav_camera:
+                                Toast.makeText(MainActivity.this, "camera clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_gallery:
+                                Toast.makeText(MainActivity.this, "gallery clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         return true;
