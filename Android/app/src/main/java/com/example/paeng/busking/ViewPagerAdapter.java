@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.paeng.busking.Fragment.FragmentList;
+import com.example.paeng.busking.Fragment.FragmentMap;
+
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private static int TAB_COUNT = 2;
