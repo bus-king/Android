@@ -8,3 +8,5 @@ Android/.DS_Store
 Android/build
 Android/captures
 Android/.externalNativeBuild
+
+Django/myvenv/
