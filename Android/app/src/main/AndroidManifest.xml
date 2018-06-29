@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Splash">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,11 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
-        <meta-data android:name="com.example.paeng.busking" android:value="b997c8870fed7509556edc7ec89d1a19"/>
+
+        <meta-data
+            android:name="com.example.paeng.busking"
+            android:value="8881b07d477f241e2161015e303f121f"/>
+
 
     </application>
 

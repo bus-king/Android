@@ -3,6 +3,7 @@ package com.example.paeng.busking;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import com.example.paeng.busking.Fragment.FragmentList;
 import com.example.paeng.busking.Fragment.FragmentMap;
@@ -20,8 +21,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
+                Log.d("TestPaeng", "1");
                 return FragmentMap.newInstance();
             case 1:
+                Log.d("TestPaeng", "2");
                 return FragmentList.newInstance();
         }
         return null;
@@ -36,9 +39,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
+                Log.d("TestPaeng", "3");
+
                 return FragmentMap.TITLE;
 
             case 1:
+                Log.d("TestPaeng", "4");
+
                 return FragmentList.TITLE;
 
         }
