@@ -1,8 +1,18 @@
 from django.contrib import admin
-from busking_django.models import Event
+from .models import Content
+from .models import Signup
 
-class EventAdmin(admin.ModelAdmin):
-    list_display=('userID','showName','showTitle', 'showLocation', 'showGenre', 'showHeart', 'showTime', 'showDescription')
+# class ContentAdmin(admin.ModelAdmin):
+#     list_display=('userID','showName','showTitle', 'showLocation', 'showGenre', 'showHeart', 'showTime', 'showDescription')
+#
+# class SignupAdmin(admin.ModelAdmin):
+#     list_display=('userId', 'userPw', 'pwCheck', 'name', 'mail', 'phone')
+#
+# admin.site.register(Content, ContentAdmin)
+# admin.site.register(Signup, SignupAdmin)
 
-admin.site.register(Event, EventAdmin)
+admin.site.register(Content)
+admin.site.register(Signup)
+
+
 # Register your models here.
