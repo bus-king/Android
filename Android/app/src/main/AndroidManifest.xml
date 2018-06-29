@@ -3,7 +3,7 @@
     package="com.example.paeng.busking">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,21 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Splash">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.example.paeng.busking"
-            android:value="8881b07d477f241e2161015e303f121f"/>
+            android:value="8881b07d477f241e2161015e303f121f" />
 
-
+        <activity android:name=".Utils.DetailActivity"></activity>
     </application>
 
 </manifest>
