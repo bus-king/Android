@@ -3,17 +3,17 @@
     package="com.example.paeng.busking">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        >
+        android:theme="@style/AppTheme">
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +27,13 @@
             android:name="com.example.paeng.busking"
             android:value="8881b07d477f241e2161015e303f121f" />
 
-        <activity android:name=".Utils.DetailActivity"></activity>
-        <activity android:name=".RegisterShowActivity"></activity>
+        <activity android:name=".Utils.DetailActivity" />
+        <activity android:name=".RegisterShowActivity" />
 
+        <service
+            android:name=".Services.GpsInfo"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

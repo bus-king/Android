@@ -1,6 +1,8 @@
 package com.example.paeng.busking.Fragment;
 
 import android.app.AlertDialog;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.MapApiConst;
 import com.example.paeng.busking.R;
+import com.example.paeng.busking.Services.GpsInfo;
 
 import net.daum.mf.map.api.MapLayout;
 import net.daum.mf.map.api.MapPOIItem;
@@ -26,9 +29,12 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     private static final int MENU_MAP_TYPE = Menu.FIRST + 1;
     private static final int MENU_MAP_MOVE = Menu.FIRST + 2;
 
+    GpsInfo gpsInfo = new GpsInfo(getContext());
+
+    protected LocationManager locationManager;
+
     private static final String LOG_TAG = "MapViewDemoActivity";
     public static final String TITLE = "Map";
-
 
     private MapView mMapView;
 
@@ -49,7 +55,7 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
         mMapView.setDaumMapApiKey(MapApiConst.DAUM_MAPS_ANDROID_APP_API_KEY);
         mMapView.setOpenAPIKeyAuthenticationResultListener(this);
         mMapView.setMapViewEventListener(this);
-        //mMapView.setPOIItemEventListener(this);
+        mMapView.setPOIItemEventListener(this);
         mMapView.setMapType(MapView.MapType.Standard);
 
         ViewGroup mapViewContainer = (ViewGroup) mView.findViewById(R.id.map_view);
@@ -77,6 +83,8 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     public void onMapViewInitialized(MapView mapView) {
         //Log.i(LOG_TAG, "MapView had loaded. Now, MapView APIs could be called safely");
         //mMapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+        Log.e("latitude", String.valueOf(gpsInfo.getLatitude()));
+        Log.e("longitude", String.valueOf(gpsInfo.getLongitude()));
         mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(37.537229,127.005515), 2, true);
         Log.e("test", "map");
     }
