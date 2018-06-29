@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
  */
 
 public class ListViewAdapter extends BaseAdapter {
+    private ImageView ivHeart;
+    private boolean boolHeart = false;
 
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
@@ -58,6 +61,29 @@ public class ListViewAdapter extends BaseAdapter {
 
         String iconUrl = listViewItem.getIconUrl();
         int genre = listViewItem.getGenre();
+
+        ivHeart = (ImageView) convertView.findViewById(R.id.iv_heart);
+        ivHeart.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.iv_heart:
+                        if (!boolHeart){
+                            ivHeart.setBackground(context.getResources().getDrawable(R.drawable.ic_heart2));
+                            boolHeart = true;
+                        }else {
+                            ivHeart.setBackground(context.getResources().getDrawable(R.drawable.ic_heart1));
+                            boolHeart = false;
+                        }
+
+
+                        break;
+
+
+                }
+            }
+        });
 
 
         // Coloring for Genre
@@ -111,4 +137,6 @@ public class ListViewAdapter extends BaseAdapter {
         imgView.setBackground(null);
 
     }
+
+
 }

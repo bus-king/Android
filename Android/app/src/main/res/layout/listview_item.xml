@@ -18,11 +18,6 @@
         android:layout_width="120dp"
         android:layout_height="match_parent"/>
 
-    <RelativeLayout
-        android:layout_width="15dp"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
 
 
     <LinearLayout
@@ -31,25 +26,29 @@
         android:layout_weight="8"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="이름 : "
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:gravity="center|left"/>
+            android:layout_weight="2">
 
             <TextView
                 android:id="@+id/item_name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="12dp"
+                android:textSize="26dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+
+                android:hint="BUSKER"
                 android:gravity="center|left"/>
 
         </LinearLayout>
@@ -57,70 +56,51 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="제목 : "
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:gravity="center|left"/>
 
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="11dp"
-                android:gravity="center|left"/>
+                android:textSize="14dp"
+                android:hint="TITLE"
+                android:textColor="#000000"
+                android:gravity="top|left"/>
 
         </LinearLayout>
-
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="h:"
-                android:textSize="15dp"
-                android:textColor="#000000"
-                android:gravity="center|left"/>
+                android:layout_weight="2.5">
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/iv_heart"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_heart1"/>
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/item_heart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textSize="15dp"
-                android:text="0"
-                android:textColor="#000000"
-                android:gravity="center"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="d:"
-                android:textSize="15dp"
+                android:text="14"
                 android:textColor="#000000"
                 android:gravity="center|left"/>
 
@@ -128,21 +108,23 @@
                 android:id="@+id/item_distance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="1km"
+                android:layout_weight="0.7"
+                android:text="1"
                 android:textSize="15dp"
                 android:textColor="#000000"
-                android:gravity="center"/>
+                android:gravity="center|right"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="KM"
+                android:gravity="center|left"/>
 
         </LinearLayout>
 
 
 
-
-
     </LinearLayout>
-
-
 
 
 
