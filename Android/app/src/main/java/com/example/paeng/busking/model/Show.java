@@ -13,11 +13,10 @@ public class Show implements Serializable {
     private String showName;
     private String showTitle;
     private String showLocation;
-    private String showGenre;
+    private int showGenre;
     private int showHeart;
     private String showTime;
     private String showDescription;
-
     private String created_at;
 
     public void setId(int id){this.id = id; }
@@ -38,7 +37,7 @@ public class Show implements Serializable {
         this.showLocation = showLocation;
     }
 
-    public void setShowGenre(String showGenre){
+    public void setShowGenre(int showGenre){
         this.showGenre = showGenre;
     }
 
@@ -61,7 +60,7 @@ public class Show implements Serializable {
     public String getShowLocation() {
         return showLocation;
     }
-    public String getShowGenre() { return this.showGenre; }
+    public int getShowGenre() { return this.showGenre; }
     public int getShowHeart() { return this.showHeart; }
     public String getShowTime() { return this.showTime; }
     public String getShowDescription() { return this.showDescription; }
