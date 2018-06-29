@@ -29,7 +29,7 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     private static final int MENU_MAP_TYPE = Menu.FIRST + 1;
     private static final int MENU_MAP_MOVE = Menu.FIRST + 2;
 
-    GpsInfo gpsInfo = new GpsInfo(getContext());
+  //  GpsInfo gpsInfo = new GpsInfo(getContext());
 
     protected LocationManager locationManager;
 
@@ -83,8 +83,8 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     public void onMapViewInitialized(MapView mapView) {
         //Log.i(LOG_TAG, "MapView had loaded. Now, MapView APIs could be called safely");
         //mMapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
-        Log.e("latitude", String.valueOf(gpsInfo.getLatitude()));
-        Log.e("longitude", String.valueOf(gpsInfo.getLongitude()));
+        //Log.e("latitude", String.valueOf(gpsInfo.getLatitude()));
+        //Log.e("longitude", String.valueOf(gpsInfo.getLongitude()));
         mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(37.537229,127.005515), 2, true);
         Log.e("test", "map");
     }

@@ -62,9 +62,13 @@ public class ListViewAdapter extends BaseAdapter {
 
         // Coloring for Genre
         if (genre == 1){
-            layoutGenre.setBackgroundColor(ContextCompat.getColor(context, R.color.colorRed));
+            layoutGenre.setBackgroundColor(R.drawable.img_bar_red);
         }else if (genre == 2){
-            layoutGenre.setBackgroundColor(ContextCompat.getColor(context, R.color.colorBlue));
+            layoutGenre.setBackgroundColor(R.drawable.img_bar_blue);
+        }else if (genre == 3){
+            layoutGenre.setBackgroundColor(R.drawable.img_bar_yellow);
+        }else if (genre == 4){
+            layoutGenre.setBackgroundColor(R.drawable.img_bar_purple);
         }
 
 

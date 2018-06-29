@@ -28,7 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-/**
+/*
  * Created by paeng on 2018. 6. 29..
  */
 
@@ -48,8 +48,6 @@ public class RegisterShowActivity extends AppCompatActivity {
 
         bindingview();
     }
-
-
 
     private void bindingview(){
         etName = (EditText)findViewById(R.id.et_name);
@@ -89,6 +87,13 @@ public class RegisterShowActivity extends AppCompatActivity {
                     Toast.makeText(RegisterShowActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                     finish();
                 }
+            }
+        });
+
+        llChooseLoc.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                tvLocation.setText("홍대 입구역 9번출구 앞");
             }
         });
 
@@ -151,7 +156,7 @@ public class RegisterShowActivity extends AppCompatActivity {
                         mMinute = "0" + Integer.toString(minute);
                     }else if(minute==0){
                         mMinute = "00";
-                    } else{
+                    }else{
                         mMinute = Integer.toString(minute);
                     }
                     resultTime = mHour+mMinute;

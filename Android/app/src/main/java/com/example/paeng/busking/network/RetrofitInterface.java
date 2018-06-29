@@ -21,10 +21,10 @@ public interface RetrofitInterface {
     @POST("users")
     Observable<Res> registerUser(@Body User user);
 
-    @POST("createContests")
+    @POST("createContents")
     Observable<Res> registerShow(@Body Show show);
 
-    @GET("createContests")
+    @GET("createContents")
     Observable<Show[]> getAllShow();
 
     @GET("show/{id}")

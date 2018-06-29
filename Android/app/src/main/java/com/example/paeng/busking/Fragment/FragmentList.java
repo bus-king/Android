@@ -37,12 +37,18 @@ import static com.example.paeng.busking.Utils.ImageTransformation.rotateBitmap;
 
 public class FragmentList extends Fragment {
 
+    public static final int DISTANCE_MODE = 1;
+    public static final int HEART_MODE = 2;
+
+
     public static final String TITLE = "List";
     ListViewAdapter adapter;
     private ArrayList<Show> showArrayList;
-    private Button btSortHeart, btSortDistance;
+    private Button btnSwitch;
     private CompositeSubscription mSubscriptions;
     private ListView showListView;
+    private int switchMode = DISTANCE_MODE;
+
 
     public static FragmentList newInstance() {
 
@@ -54,10 +60,8 @@ public class FragmentList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        btSortDistance = (Button)mView.findViewById(R.id.bt_sort_distance);
-        btSortHeart = (Button)mView.findViewById(R.id.bt_sort_heart);
-        btSortDistance.setOnClickListener(listener);
-        btSortHeart.setOnClickListener(listener);
+        btnSwitch = (Button)mView.findViewById(R.id.btn_switch);
+        btnSwitch.setOnClickListener(listener);
 
         showArrayList = new ArrayList<Show>();
         adapter = new ListViewAdapter();
@@ -66,36 +70,6 @@ public class FragmentList extends Fragment {
         loadShowInformation();
 
         //inner db
-
-        /*
-        final DBHelper dbHelper = new DBHelper(getActivity(), "Busking.db", null, 1);
-
-        String[] showResult = dbHelper.getResultShowList();
-        int id = 0;
-        for (String showitem : showResult){
-            if (showitem!=null) {
-                String[] showItems = showitem.split("/");
-
-                Show show1 = new Show();
-
-                show1.setId(id);
-                show1.setUserId(showItems[1]);
-                show1.setShowName(showItems[2]);
-                show1.setShowTitle(showItems[3]);
-                show1.setShowLocation(showItems[4]);
-                show1.setShowGenre(Integer.valueOf(showItems[5]));
-                show1.setShowHeart(Integer.valueOf(showItems[6]));
-                show1.setShowTime(showItems[7]);
-                show1.setShowDescription(showItems[8]);
-
-                showArrayList.add(show1);
-                adapter.addItemShow(null, show1.getShowName(), show1.getShowTitle(), show1.getShowHeart(), show1.getShowHeart(), show1.getShowGenre());
-
-                id++;
-            }
-        }
-        */
-
 
 
         showListView = (ListView) mView.findViewById(R.id.lv_show);
@@ -114,11 +88,11 @@ public class FragmentList extends Fragment {
 
     private void handleResponse(Show[] shows){
 
-        for (Show showItem :shows){
+        for (Show showItem:shows){
             if(showItem != null){
 
                 showArrayList.add(showItem);
-                adapter.addItemShow(null, showItem.getShowName(), showItem.getShowTitle(), showItem.getShowHeart(), showItem.getShowHeart(), showItem.getShowGenre());
+                adapter.addItemShow(null, showItem.getShowName(), showItem.getShowTitle(), showItem.getShowHeart(), 1.2, showItem.getShowGenre());
                 showListView.setAdapter(adapter);
             }
         }
@@ -153,10 +127,6 @@ public class FragmentList extends Fragment {
         double distance = 1.2;
 
 
-
-
-
-
         return distance;
     }
 
@@ -165,17 +135,18 @@ public class FragmentList extends Fragment {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.bt_sort_distance:
+                case R.id.btn_switch:
+                    if (switchMode == DISTANCE_MODE){
+                        btnSwitch.setBackground(getResources().getDrawable(R.drawable.ic_switch2));
+                        switchMode = HEART_MODE;
 
-
-                    break;
-
-
-                case R.id.bt_sort_heart:
-
-
-                    break;
-
+                    }else if (switchMode == HEART_MODE){
+                        btnSwitch.setBackground(getResources().getDrawable(R.drawable.ic_switch1));
+                        switchMode = DISTANCE_MODE;
+                    }else{
+                        btnSwitch.setBackground(getResources().getDrawable(R.drawable.ic_switch1));
+                        switchMode = DISTANCE_MODE;
+                    }
             }
         }
     };
@@ -183,3 +154,33 @@ public class FragmentList extends Fragment {
 
 
 }
+
+/*
+<innerDB>
+        final DBHelper dbHelper = new DBHelper(getActivity(), "Busking.db", null, 1);
+
+        String[] showResult = dbHelper.getResultShowList();
+        int id = 0;
+        for (String showitem : showResult){
+            if (showitem!=null) {
+                String[] showItems = showitem.split("/");
+
+                Show show1 = new Show();
+
+                show1.setId(id);
+                show1.setUserId(showItems[1]);
+                show1.setShowName(showItems[2]);
+                show1.setShowTitle(showItems[3]);
+                show1.setShowLocation(showItems[4]);
+                show1.setShowGenre(Integer.valueOf(showItems[5]));
+                show1.setShowHeart(Integer.valueOf(showItems[6]));
+                show1.setShowTime(showItems[7]);
+                show1.setShowDescription(showItems[8]);
+
+                showArrayList.add(show1);
+                adapter.addItemShow(null, show1.getShowName(), show1.getShowTitle(), show1.getShowHeart(), show1.getShowHeart(), show1.getShowGenre());
+
+                id++;
+            }
+        }
+        */
