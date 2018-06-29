@@ -5,4 +5,15 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorRed">#CC0000</color>
     <color name="colorBlue">#3333AA</color>
+
+    <!-- 249 242 237 -->
+    <color name="colorMainLight">#F9F2ED</color>
+    <!-- 234 208 195 -->
+    <color name="colorMainButton">#EAD0C3</color>
+    <!-- 244 225 212 -->
+    <color name="colorMainDark">#F4E1D4</color>
+    <!-- 102 102 102 -->
+    <color name="colorLineGray">#666666</color>
+    <!-- 188 187 187 -->
+    <color name="colorMainGray">#BCBBBB</color>
 </resources>

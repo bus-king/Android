@@ -21,8 +21,11 @@ public interface RetrofitInterface {
     @POST("users")
     Observable<Res> registerUser(@Body User user);
 
-    @POST("show")
+    @POST("createContests")
     Observable<Res> registerShow(@Body Show show);
+
+    @GET("createContests")
+    Observable<Show[]> getAllShow();
 
     @GET("show/{id}")
     Observable<Show> getShow(@Path("id") int id);

@@ -65,9 +65,9 @@ public class RegisterShowActivity extends AppCompatActivity {
                     showTest.setShowTime(etTime.getText().toString());
                     showTest.setShowDescription(etDesc.getText().toString());
 
-                    //registerProgress(showTest);
+                    registerProgress(showTest);
 
-                    registerProgressInnerDB(showTest);
+                    //registerProgressInnerDB(showTest);
                     Toast.makeText(RegisterShowActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                     finish();
                 }
