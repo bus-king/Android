@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.example.paeng.busking.R;
 
+import net.daum.mf.map.api.MapView;
+
+
 public class FragmentMap extends Fragment {
 
     public static final String TITLE = "Map";
@@ -21,6 +24,15 @@ public class FragmentMap extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_map, container, false);
+
+        View mView = inflater.inflate(R.layout.fragment_map, container, false);
+        /*
+        MapView mapView = new MapView(getActivity());
+
+        ViewGroup mapViewContainer = (ViewGroup)mView.findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
+        */
+
+        return mView;
     }
 }

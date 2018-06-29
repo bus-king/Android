@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.paeng.busking">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".MainActivity" />
         <activity android:name=".DetailActivity"></activity>
+=======
+
+        <activity android:name=".MainActivity"/>
+        <meta-data android:name="com.example.paeng.busking" android:value="b997c8870fed7509556edc7ec89d1a19"/>
+
+>>>>>>> 96393a481678ef4e83577ac238b77d91fbcc0ce0
     </application>
 
 </manifest>
