@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    private FloatingActionButton mFab;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, );
+                Intent intent = new Intent(MainActivity.this, RegisterShowActivity.class);
+                startActivity(intent);
             }
         });
 

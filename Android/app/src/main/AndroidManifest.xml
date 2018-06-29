@@ -28,6 +28,8 @@
             android:value="8881b07d477f241e2161015e303f121f" />
 
         <activity android:name=".Utils.DetailActivity"></activity>
+        <activity android:name=".RegisterShowActivity"></activity>
+
     </application>
 
 </manifest>
