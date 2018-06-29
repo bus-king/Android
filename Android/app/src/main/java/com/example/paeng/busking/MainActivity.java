@@ -46,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
         setViewPager();
         setDrawer();
 
-
-
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        setViewPager();
     }
 
 

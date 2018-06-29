@@ -6,14 +6,14 @@ package com.example.paeng.busking.ListViewContent;
 
 public class ListViewItem {
 
-    private String genre;
+    private int genre;
     private String iconUrl;
     private String name;
     private String title;
     private int heart;
     private double distance;
 
-    public void setGenre(String genre){
+    public void setGenre(int genre){
         this.genre = genre;
     }
     public void setIconUrl(String icon) {
@@ -34,7 +34,7 @@ public class ListViewItem {
     public String getIconUrl() {
         return this.iconUrl;
     }
-    public String getGenre(){
+    public int getGenre(){
         return this.genre;
     }
     public String getName() {

@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.paeng.busking.InnerDB.DBHelper;
 import com.example.paeng.busking.model.Res;
 import com.example.paeng.busking.model.Show;
 import com.example.paeng.busking.network.NetworkUtil;
@@ -53,7 +54,6 @@ public class RegisterShowActivity extends AppCompatActivity {
                 if (checkjoin()) {
 
                     Show showTest = new Show();
-                    showTest.setId(1);
                     showTest.setUserId("nuggy875");
                     showTest.setShowName("팽진욱");
                     showTest.setShowTitle("공연합니다");
@@ -65,10 +65,21 @@ public class RegisterShowActivity extends AppCompatActivity {
 
                     //registerProgress(showTest);
 
-
+                    registerProgressInnerDB(showTest);
+                    Toast.makeText(RegisterShowActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
+    }
+
+    private void registerProgressInnerDB(Show showDB){
+
+        final DBHelper dbHelper = new DBHelper(getApplicationContext(), "Busking.db", null, 1);
+        dbHelper.insertShow(showDB.getUserId(),showDB.getShowName(), showDB.getShowTitle(),
+                showDB.getShowLocation(), showDB.getShowGenre(), showDB.getShowHeart(), showDB.getShowTime(),
+                showDB.getShowDescription());
+
     }
 
     private void registerProgress(Show showDB) {

@@ -57,23 +57,23 @@ public class ListViewAdapter extends BaseAdapter {
         ListViewItem listViewItem = listViewItemList.get(position);
 
         String iconUrl = listViewItem.getIconUrl();
-        String genre = listViewItem.getGenre();
+        int genre = listViewItem.getGenre();
 
 
         // Coloring for Genre
-        if (genre.equals("hip hop")){
+        if (genre == 1){
             layoutGenre.setBackgroundColor(ContextCompat.getColor(context, R.color.colorRed));
-        }else if (genre.equals("ballad")){
+        }else if (genre == 2){
             layoutGenre.setBackgroundColor(ContextCompat.getColor(context, R.color.colorBlue));
         }
 
 
         // image example
-        if (iconUrl == null && genre.equals("hip hop")){
+        if (iconUrl == null && genre==1){
             Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hiphop);
             showImageTest(bm, iconImageView);
         }
-        else if (iconUrl == null && genre.equals("ballad")){
+        else if (iconUrl == null && genre==2){
             Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hs);
             showImageTest(bm, iconImageView);
         }
@@ -86,7 +86,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         return convertView;
     }
-    public void addItemShow(String iconUrl, String name, String title, int heart, double distance, String genre) {
+    public void addItemShow(String iconUrl, String name, String title, int heart, double distance, int genre) {
         ListViewItem item = new ListViewItem();
 
         item.setIconUrl(iconUrl);

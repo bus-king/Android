@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.example.paeng.busking.InnerDB.DBHelper;
 import com.example.paeng.busking.ListViewContent.ListViewAdapter;
 import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.R;
@@ -49,8 +50,34 @@ public class FragmentList extends Fragment {
         showArrayList = new ArrayList<Show>();
         adapter = new ListViewAdapter();
 
-/*
+        final DBHelper dbHelper = new DBHelper(getActivity(), "Busking.db", null, 1);
 
+        String[] showResult = dbHelper.getResultShowList();
+        int id = 0;
+        for (String showitem : showResult){
+            if (showitem!=null) {
+                String[] showItems = showitem.split("/");
+
+                Show show1 = new Show();
+
+                show1.setId(id);
+                show1.setUserId(showItems[1]);
+                show1.setShowName(showItems[2]);
+                show1.setShowTitle(showItems[3]);
+                show1.setShowLocation(showItems[4]);
+                show1.setShowGenre(Integer.valueOf(showItems[5]));
+                show1.setShowHeart(Integer.valueOf(showItems[6]));
+                show1.setShowTime(showItems[7]);
+                show1.setShowDescription(showItems[8]);
+
+                showArrayList.add(show1);
+                adapter.addItemShow(null, show1.getShowName(), show1.getShowTitle(), show1.getShowHeart(), show1.getShowHeart(), show1.getShowGenre());
+
+                id++;
+            }
+        }
+
+/*
         for (Dog dogitem : dog){
             if(dogitem != null){
 
@@ -64,7 +91,7 @@ public class FragmentList extends Fragment {
         }
  */
 
-
+/*
         // data example
         Show show1 = new Show();
         Show show2 = new Show();
@@ -72,7 +99,7 @@ public class FragmentList extends Fragment {
         show1.setId(1);
         show1.setUserId("nuggy875");
         show1.setShowDescription("나는 힙 합 밀당녀");
-        show1.setShowGenre("hip hop");
+        show1.setShowGenre(1);
         show1.setShowHeart(5);
         show1.setShowLocation("홍대 걷고싶은 거리 1번");
         show1.setShowName("김선희");
@@ -82,7 +109,7 @@ public class FragmentList extends Fragment {
         show2.setId(2);
         show2.setUserId("hihi1234");
         show2.setShowDescription("감성 발라더");
-        show2.setShowGenre("ballad");
+        show2.setShowGenre(2);
         show2.setShowHeart(10);
         show2.setShowLocation("신촌");
         show2.setShowName("포스틱맨");
@@ -95,6 +122,8 @@ public class FragmentList extends Fragment {
 
         adapter.addItemShow(null, show1.getShowName(), show1.getShowTitle(), show1.getShowHeart(), 1.2, show1.getShowGenre());
         adapter.addItemShow(null, show2.getShowName(), show2.getShowTitle(), show2.getShowHeart(), 0.8, show2.getShowGenre());
+
+*/
 
         ListView showListView = (ListView) mView.findViewById(R.id.lv_show);
         showListView.setAdapter(adapter);
