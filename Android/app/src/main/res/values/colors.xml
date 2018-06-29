@@ -16,4 +16,6 @@
     <color name="colorLineGray">#666666</color>
     <!-- 188 187 187 -->
     <color name="colorMainGray">#BCBBBB</color>
+    <!-- 77 77 77 -->
+    <color name="colorMainGrayText">#4D4D4D</color>
 </resources>
