@@ -27,6 +27,8 @@ import rx.subscriptions.CompositeSubscription;
 
 public class RegisterShowActivity extends AppCompatActivity {
     private CompositeSubscription mSubscriptions;
+    EditText etTitle, etTime, etLoc, etGenre, etDesc;
+    Button btnRegister;
 
 
     @Override
@@ -40,12 +42,12 @@ public class RegisterShowActivity extends AppCompatActivity {
 
     private void bindingview(){
 
-        EditText etTitle = (EditText)findViewById(R.id.et_title);
-        EditText etTime = (EditText)findViewById(R.id.et_time);
-        EditText etLoc = (EditText)findViewById(R.id.et_loc);
-        EditText etGenre = (EditText)findViewById(R.id.et_genre);
-        EditText etDesc = (EditText)findViewById(R.id.et_desc);
-        Button btnRegister = (Button)findViewById(R.id.btn_register);
+        etTitle = (EditText)findViewById(R.id.et_title);
+        etTime = (EditText)findViewById(R.id.et_time);
+        etLoc = (EditText)findViewById(R.id.et_loc);
+        etGenre = (EditText)findViewById(R.id.et_genre);
+        etDesc = (EditText)findViewById(R.id.et_desc);
+        btnRegister = (Button)findViewById(R.id.btn_register);
         mSubscriptions = new CompositeSubscription();
         btnRegister.setOnClickListener(new Button.OnClickListener(){
 
@@ -56,12 +58,12 @@ public class RegisterShowActivity extends AppCompatActivity {
                     Show showTest = new Show();
                     showTest.setUserId("nuggy875");
                     showTest.setShowName("팽진욱");
-                    showTest.setShowTitle("공연합니다");
-                    showTest.setShowLocation("홍대거리");
-                    showTest.setShowGenre(1);
-                    showTest.setShowHeart(4);
-                    showTest.setShowTime("18070118000");
-                    showTest.setShowDescription("눈물짜는발라드공연합니다");
+                    showTest.setShowTitle(etTitle.getText().toString());
+                    showTest.setShowLocation(etLoc.getText().toString());
+                    showTest.setShowGenre(Integer.valueOf(etGenre.getText().toString()));
+                    showTest.setShowHeart(0);
+                    showTest.setShowTime(etTime.getText().toString());
+                    showTest.setShowDescription(etDesc.getText().toString());
 
                     //registerProgress(showTest);
 
@@ -115,8 +117,26 @@ public class RegisterShowActivity extends AppCompatActivity {
         Toast.makeText(RegisterShowActivity.this, message, Toast.LENGTH_SHORT).show();
     }
     private boolean checkjoin(){
+        if(etTitle.getText().toString().equals("")){
+            Toast.makeText(RegisterShowActivity.this, "제목을 입력해주세요", Toast.LENGTH_LONG).show();
+            return false;
+        }else if (etLoc.getText().toString().equals("")){
+            Toast.makeText(RegisterShowActivity.this, "위치을 입력해주세요", Toast.LENGTH_LONG).show();
+            return false;
+        }else if (etTime.getText().toString().equals("")) {
+            Toast.makeText(RegisterShowActivity.this, "시간을 입력해주세요", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (etGenre.getText().toString().equals("")) {
+            Toast.makeText(RegisterShowActivity.this, "장르를 입력해주세요", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (etDesc.getText().toString().equals("")) {
 
-        return true;
+            Toast.makeText(RegisterShowActivity.this, "설명을 입력해주세요", Toast.LENGTH_LONG).show();
+            return false;
+        } else{
+            return true;
+
+        }
     }
     @Override
     protected void onDestroy(){
