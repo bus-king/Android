@@ -1,21 +1,21 @@
 package com.example.paeng.busking.Fragment;
 
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.example.paeng.busking.ListViewContent.ListViewAdapter;
+import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.R;
 import com.example.paeng.busking.model.Show;
 
@@ -29,6 +29,7 @@ public class FragmentList extends Fragment {
     public static final String TITLE = "List";
     ListViewAdapter adapter;
     private ArrayList<Show> showArrayList;
+    private Button btSortHeart, btSortDistance;
 
     public static FragmentList newInstance() {
 
@@ -39,6 +40,11 @@ public class FragmentList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_list, container, false);
+
+        btSortDistance = (Button)mView.findViewById(R.id.bt_sort_distance);
+        btSortHeart = (Button)mView.findViewById(R.id.bt_sort_heart);
+        btSortDistance.setOnClickListener(listener);
+        btSortHeart.setOnClickListener(listener);
 
         showArrayList = new ArrayList<Show>();
         adapter = new ListViewAdapter();
@@ -83,10 +89,10 @@ public class FragmentList extends Fragment {
         show2.setShowTime("201807012100");
         show2.setShowTitle("신촌을 못가");
 
-
-
         showArrayList.add(show1);
         showArrayList.add(show2);
+
+
         adapter.addItemShow(null, show1.getShowName(), show1.getShowTitle(), show1.getShowHeart(), 1.2, show1.getShowGenre());
         adapter.addItemShow(null, show2.getShowName(), show2.getShowTitle(), show2.getShowHeart(), 0.8, show2.getShowGenre());
 
@@ -96,6 +102,40 @@ public class FragmentList extends Fragment {
 
         return mView;
     }
+
+    public double getDistanceFromLocation (String location){
+
+        //location 으로부터 distance 구하기
+        double distance = 1.2;
+
+
+
+
+
+
+        return distance;
+    }
+
+    Button.OnClickListener listener = new Button.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.bt_sort_distance:
+
+
+                    break;
+
+
+                case R.id.bt_sort_heart:
+
+
+                    break;
+
+            }
+        }
+    };
+
 
 
 }

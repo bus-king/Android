@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 public class Show implements Serializable {
 
-
     private int id;
     private String userId;
     private String showName;
@@ -19,9 +18,7 @@ public class Show implements Serializable {
     private String showTime;
     private String showDescription;
 
-
     private String created_at;
-
 
     public void setId(int id){this.id = id; }
 
