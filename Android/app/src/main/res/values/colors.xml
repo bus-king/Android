@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#909090</color>
-    <color name="colorPrimaryDark">#666666</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#BCBBBB</color>
+    <color name="colorPrimaryDark">#F4E1D4</color>
     <color name="colorRed">#CC0000</color>
     <color name="colorBlue">#3333AA</color>
+
+    <color name="colorWhite">#FFFFFF</color>
 
     <!-- 249 242 237 -->
     <color name="colorMainLight">#F9F2ED</color>
@@ -12,6 +13,8 @@
     <color name="colorMainButton">#EAD0C3</color>
     <!-- 244 225 212 -->
     <color name="colorMainDark">#F4E1D4</color>
+    <!-- 239 239 239 -->
+    <color name="colorLightGray">#EFEFEF</color>
     <!-- 102 102 102 -->
     <color name="colorLineGray">#666666</color>
     <!-- 188 187 187 -->
