@@ -1,12 +1,12 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from busking_django.models import Event  
+from busking_django.models import Event
 from busking_django.serializers import EventSerializer
 
 # 요청 url 인 bbs/ 에 대해서 urls.py 에 정의된 view.bbs_list 가 호출된다.
 @api_view(['GET', 'POST'])
-def event_list(request, format=None):  
+def event_list(request, format=None):
     if request.method == 'GET':
         event = Event.objects.all()
         serializer = EventSerializer(event, many=True) # many 값이 True 이면 다수의 데이터 instance를 직렬화할수 있다
