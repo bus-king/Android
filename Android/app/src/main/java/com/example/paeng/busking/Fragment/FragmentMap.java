@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.paeng.busking.Logics.PositionLogic;
 import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.MapApiConst;
 import com.example.paeng.busking.R;
@@ -34,6 +35,9 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
@@ -45,9 +49,10 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     private static final int MENU_MAP_TYPE = Menu.FIRST + 1;
     private static final int MENU_MAP_MOVE = Menu.FIRST + 2;
 
+    private boolean wait_for_server = false;
     private Context mContext;
     GpsInfo gpsInfo;
-
+    private List<Show> show_list = new ArrayList<>();
     protected LocationManager locationManager;
 
     private static final String LOG_TAG = "MapViewDemoActivity";
@@ -56,6 +61,7 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
 
 
     private MapView mMapView;
+    MapPOIItem marker;
 
     public static FragmentMap newInstance() {
         return new FragmentMap();
@@ -69,6 +75,8 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        double lat = 0;
+        double lon = 0;
 
         View mView = inflater.inflate(R.layout.fragment_map, container, false);
         String[] PERMISSIONS = {"android.permission.INTERNET",
@@ -94,15 +102,19 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
 
         ViewGroup mapViewContainer = (ViewGroup) mView.findViewById(R.id.map_view);
         mapViewContainer.addView(mapLayout);
-        MapPOIItem marker = new MapPOIItem();
-
-        marker.setItemName("Default Marker");
-        marker.setTag(0);
-        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.00557633));
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        Log.e("marker", marker.toString());
-        mMapView.addPOIItem(marker);
+        marker = new MapPOIItem();
+//        for(Show show: show_list) {
+//            PositionLogic position_logic = new PositionLogic(show.getShowLocation());
+//            position_logic.load_data(lat, lon);
+//            Log.e("lat, lon", lat + " " + lon + " ");
+//            marker.setItemName("title: " + show.getShowTitle() + '\n' + "name: " + show.getShowName() + '\n');
+//            marker.setTag(0);
+//            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lon));
+//            marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+//            marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+//            Log.e("marker", marker.toString());
+//            mMapView.addPOIItem(marker);
+//        }
 
         return mView;
     }
@@ -116,13 +128,76 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
 
     private void handleResponse(Show[] shows){
 
-        for (Show showItem:shows){
-            if(showItem != null){
+        double lat = 37;
+        double lon = 127;
+        String genre = new String();
+
+        for (Show show:shows){
 
 
-                
+            if(show != null){
+                Log.e("test(location)", show.getShowLocation());
+                if(show.getShowLocation() == "홍대") {
+                    Random oRandom = new Random();
+                    lat = oRandom.nextDouble() + 37.0;
+                    lon = oRandom.nextDouble() + 127.0;
+                }
+                //PositionLogic position_logic = new PositionLogic(show.getShowLocation());
+                Log.e("test", "one");
+                //position_logic.load_data(lat, lon);
+                Log.e("lat, lon", lat + " " + lon + " ");
+               switch(show.getShowGenre()) {
+                    case 1:
+                        genre = "노래";
+                        marker.setMarkerType(MapPOIItem.MarkerType.RedPin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+                        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                        break;
+                    case 2:
+                        genre = "춤";
+                        marker.setMarkerType(MapPOIItem.MarkerType.YellowPin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+                        marker.setSelectedMarkerType(MapPOIItem.MarkerType.YellowPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                        break;
+                    case 3:
+                        genre = "퍼포먼스";
+                        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+                        marker.setSelectedMarkerType(MapPOIItem.MarkerType.BluePin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                        break;
+                    case 4:
+                        genre = "기타";
+                        marker.setMarkerType(MapPOIItem.MarkerType.RedPin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+                        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                        break;
+                     default:
+                         Log.e("error", "genre should be 1 ~ 4");
+
+                }
+                marker.setItemName("title: " + show.getShowTitle() + '\n' + "name: " + show.getShowName() + '\n' + "genre: " + genre + "time: " + show.getShowTime());
+                marker.setTag(0);
+                marker.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lon));
+                marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+                marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                Log.e("marker", marker.toString());
+                mMapView.addPOIItem(marker);
             }
         }
+
+
+
+        Log.e("before", "show list");
+//        for(Show show: show_list) {
+//            PositionLogic position_logic = new PositionLogic(show.getShowLocation());
+//            position_logic.load_data(lat, lon);
+//            Log.e("lat, lon", lat + " " + lon + " ");
+//            marker.setItemName("title: " + show.getShowTitle() + '\n' + "name: " + show.getShowName() + '\n');
+//            marker.setTag(0);
+//            marker.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lon));
+//            marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.mapViewContainer.addView(mapLayout);
+//            marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+//            Log.e("marker", marker.toString());
+//            mMapView.addPOIItem(marker);
+//        }
+        Log.e("marker", marker.toString());
+        Log.e("show size", show_list.size()+"");
 
     }
     private void handleError(Throwable error) {
@@ -157,10 +232,7 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
     public void onMapViewInitialized(MapView mapView) {
         //Log.i(LOG_TAG, "MapView had loaded. Now, MapView APIs could be called safely");
         //mMapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
-        Log.e("latitude", String.valueOf(gpsInfo.getLatitude()));
-        Log.e("longitude", String.valueOf(gpsInfo.getLongitude()));
-        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(gpsInfo.getLatitude(),gpsInfo.getLongitude()), 2, true);
-        Log.e("test", "map");
+         mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(gpsInfo.getLatitude(),gpsInfo.getLongitude()), 2, true);
     }
 
     @Override
