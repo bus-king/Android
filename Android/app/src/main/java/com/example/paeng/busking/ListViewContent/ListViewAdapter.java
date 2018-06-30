@@ -104,7 +104,7 @@ public class ListViewAdapter extends BaseAdapter {
             Bitmap bm4 = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_genre4);
             showImageTest(bm4, iconImageView);
         }
-        
+
 
         nameTextView.setText(listViewItem.getName());
         titleTextView.setText(listViewItem.getTitle());
