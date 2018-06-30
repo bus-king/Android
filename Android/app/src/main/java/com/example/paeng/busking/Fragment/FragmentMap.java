@@ -137,7 +137,7 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
 
             if(show != null){
                 Log.e("test(location)", show.getShowLocation());
-                if(show.getShowLocation() == "홍대") {
+                if(show.getShowLocation().equals("홍대")) {
                     Random oRandom = new Random();
                     lat = oRandom.nextDouble() + 37.0;
                     lon = oRandom.nextDouble() + 127.0;
