@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#ffffff"
+            android:text="버S킹"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:gravity="center"
+            />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorMainLight"
+                    android:text="Busking Detail"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorMainButton"
+                        android:layout_marginTop="55dp"
+                        android:orientation="vertical"
+                        >
+                        <!-- ID -->
+                        <LinearLayout
+                            android:layout_marginTop="60dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:text="ID"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:textSize="20dp"
+                                android:gravity="center|right"/>
+
+                            <TextView
+
+                                android:id="@+id/tv_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="ch_music_in_street"
+                                android:textSize="14dp"
+                                android:textColor="#000000"
+                                android:gravity="center|left"
+                                android:layout_marginLeft="10dp"/>
+
+
+                        </LinearLayout>
+                        <!-- when -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:text="언제"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:textSize="18dp"
+                                android:gravity="center|right"/>
+
+                            <TextView
+                                android:id="@+id/tv_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="7월 6일"
+                                android:textSize="14dp"
+                                android:textColor="#000000"
+                                android:gravity="center|left"
+                                android:layout_marginLeft="10dp"/>
+
+
+
+                        </LinearLayout>
+                        <!-- where -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:text="어디서"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:textSize="18dp"
+                                android:gravity="center|right"/>
+
+                            <TextView
+                                android:id="@+id/tv_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="ch_music_in_street"
+                                android:textSize="14dp"
+                                android:textColor="#000000"
+                                android:gravity="center|left"
+                                android:layout_marginLeft="10dp"/>
+
+
+
+                        </LinearLayout>
+                        <!-- line -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_centerInParent="true"
+                            android:background="#000000"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="14dp"
+                            android:textSize="20dp"
+                            android:text="CONTENT"
+                            android:paddingRight="10dp"
+                            android:textColor="#000000"/>
+
+                        <TextView
+                            android:id="@+id/tv_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@string/description_example"
+                            android:layout_marginBottom="50dp"/>
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="15dp"
+                        android:gravity="center"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3">
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:layout_marginRight="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/img_ch"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="창현 거리 노래방"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:textSize="20dp"/>
+
+                            <TextView
+                                android:id="@+id/tv_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="누구나 노래할 수 있는 창현의 거리 노래방"
+                                android:textSize="11dp"
+                                android:scrollbars="vertical"/>
+
+                        </LinearLayout>
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

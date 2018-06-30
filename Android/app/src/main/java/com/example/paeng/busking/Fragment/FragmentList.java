@@ -1,5 +1,6 @@
 package com.example.paeng.busking.Fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -19,6 +21,7 @@ import com.example.paeng.busking.InnerDB.DBHelper;
 import com.example.paeng.busking.ListViewContent.ListViewAdapter;
 import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.R;
+import com.example.paeng.busking.ShowListDetailActivity;
 import com.example.paeng.busking.model.Res;
 import com.example.paeng.busking.model.Show;
 import com.example.paeng.busking.network.NetworkUtil;
@@ -74,6 +77,19 @@ public class FragmentList extends Fragment {
 
         showListView = (ListView) mView.findViewById(R.id.lv_show);
         showListView.setAdapter(adapter);
+
+        showListView.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getActivity(), ShowListDetailActivity.class);
+                intent.putExtra("position", String.valueOf(position));
+                intent.putExtra("showSet", showArrayList);
+                startActivity(intent);
+
+            }
+        });
 
 
         return mView;

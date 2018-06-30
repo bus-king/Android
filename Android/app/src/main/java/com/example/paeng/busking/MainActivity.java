@@ -1,6 +1,7 @@
 package com.example.paeng.busking;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorFabRed2)));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         setViewPager();
         setDrawer();
@@ -75,11 +79,23 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                         switch(menuItem.getItemId()){
-                            case R.id.nav_camera:
-                                Toast.makeText(MainActivity.this, "camera clicked", Toast.LENGTH_SHORT).show();
+                            case R.id.nav_sign:
+                                Toast.makeText(MainActivity.this, "sign button", Toast.LENGTH_SHORT).show();
                                 break;
-                            case R.id.nav_gallery:
-                                Toast.makeText(MainActivity.this, "gallery clicked", Toast.LENGTH_SHORT).show();
+                            case R.id.nav_sign_up:
+                                Toast.makeText(MainActivity.this, "signup clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_my_busking:
+                                Toast.makeText(MainActivity.this, "my busking clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_my_heart:
+                                Toast.makeText(MainActivity.this, "my heart clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_report:
+                                Toast.makeText(MainActivity.this, "report clicked", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.nav_out:
+                                Toast.makeText(MainActivity.this, "out clicked", Toast.LENGTH_SHORT).show();
                                 break;
                         }
                         menuItem.setChecked(true);

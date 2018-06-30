@@ -27,8 +27,8 @@
             android:name="com.example.paeng.busking"
             android:value="8881b07d477f241e2161015e303f121f" />
 
-        <activity android:name=".Utils.DetailActivity" />
         <activity android:name=".RegisterShowActivity" />
+        <activity android:name=".ShowListDetailActivity"/>
 
         <service
             android:name=".Services.GpsInfo"

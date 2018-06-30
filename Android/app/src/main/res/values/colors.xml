@@ -21,4 +21,7 @@
     <color name="colorMainGray">#BCBBBB</color>
     <!-- 77 77 77 -->
     <color name="colorMainGrayText">#4D4D4D</color>
+
+    <color name="colorFabRed">#f49571</color>
+    <color name="colorFabRed2">#E36347</color>
 </resources>
