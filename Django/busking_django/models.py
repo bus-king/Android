@@ -1,7 +1,7 @@
 from django.db import models
 
 class Content(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     userID = models.CharField(max_length=100, blank=True, default='')
     showName = models.CharField(max_length=100, blank=True, default='')
     showTitle = models.CharField(max_length=100, blank=True, default='')
