@@ -22,12 +22,23 @@ import com.example.paeng.busking.MainActivity;
 import com.example.paeng.busking.MapApiConst;
 import com.example.paeng.busking.R;
 import com.example.paeng.busking.Services.GpsInfo;
+import com.example.paeng.busking.model.Res;
+import com.example.paeng.busking.model.Show;
+import com.example.paeng.busking.network.NetworkUtil;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import net.daum.mf.map.api.MapLayout;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.io.IOException;
+
+import retrofit2.adapter.rxjava.HttpException;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 public class FragmentMap extends Fragment implements MapView.MapViewEventListener, MapView.POIItemEventListener, MapView.OpenAPIKeyAuthenticationResultListener{
@@ -41,6 +52,8 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
 
     private static final String LOG_TAG = "MapViewDemoActivity";
     public static final String TITLE = "Map";
+    private CompositeSubscription mSubscriptions;
+
 
     private MapView mMapView;
 
@@ -62,6 +75,9 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
                 "android.permission.ACCESS_COARSE_LOCATION",
                 "android.permission.ACCEESS_FINE_LOCATION"
         };
+        mSubscriptions = new CompositeSubscription();
+        loadShowInformation();
+
 
         requestNecessaryPermissions(PERMISSIONS);
         gpsInfo = new GpsInfo(getContext());
@@ -89,6 +105,46 @@ public class FragmentMap extends Fragment implements MapView.MapViewEventListene
         mMapView.addPOIItem(marker);
 
         return mView;
+    }
+
+    private void loadShowInformation(){
+        mSubscriptions.add(NetworkUtil.getRetrofit().getAllShow()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse,this::handleError));
+    }
+
+    private void handleResponse(Show[] shows){
+
+        for (Show showItem:shows){
+            if(showItem != null){
+
+
+                
+            }
+        }
+
+    }
+    private void handleError(Throwable error) {
+
+        if (error instanceof HttpException) {
+
+            Gson gson = new GsonBuilder().create();
+            try {
+                String errorBody = ((HttpException) error).response().errorBody().string();
+                Res response = gson.fromJson(errorBody, com.example.paeng.busking.model.Res.class);
+                showSnackBarMessage(response.getMessage());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            showSnackBarMessage("Network Error !");
+        }
+    }
+    private void showSnackBarMessage(String message){
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onDaumMapOpenAPIKeyAuthenticationResult(MapView mapView, int resultCode, String resultMessage) {
