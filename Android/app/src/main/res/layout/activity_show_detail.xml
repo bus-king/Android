@@ -33,23 +33,34 @@
                 android:orientation="vertical"
                 android:paddingBottom="60dp">
 
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/colorMainLight"
-                    android:text="Busking Detail"
-                    android:textColor="#000000"
-                    android:textSize="20dp"
                     android:gravity="center"
-                    />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Busking Detail"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        />
+
+
+
+
+
+                </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp">
-
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -58,6 +69,7 @@
                         android:layout_marginTop="55dp"
                         android:orientation="vertical"
                         >
+
                         <!-- ID -->
                         <LinearLayout
                             android:layout_marginTop="60dp"
@@ -131,7 +143,7 @@
                                 android:id="@+id/tv_location"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:text="ch_music_in_street"
+                                android:text="서대문구 홍대입구 HnM 근처"
                                 android:textSize="14dp"
                                 android:textColor="#000000"
                                 android:gravity="center|left"
@@ -171,12 +183,6 @@
                             android:layout_marginRight="14dp"
                             android:text="@string/description_example"
                             android:layout_marginBottom="50dp"/>
-
-
-
-
-
-
 
                     </LinearLayout>
 

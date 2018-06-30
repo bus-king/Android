@@ -89,25 +89,22 @@ public class ListViewAdapter extends BaseAdapter {
         // Coloring for Genre
         if (genre == 1){
             layoutGenre.setBackgroundColor(R.drawable.img_bar_red);
+            Bitmap bm1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_genre1);
+            showImageTest(bm1, iconImageView);
         }else if (genre == 2){
             layoutGenre.setBackgroundColor(R.drawable.img_bar_blue);
+            Bitmap bm2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_genre2);
+            showImageTest(bm2, iconImageView);
         }else if (genre == 3){
             layoutGenre.setBackgroundColor(R.drawable.img_bar_yellow);
+            Bitmap bm3 = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_genre3);
+            showImageTest(bm3, iconImageView);
         }else if (genre == 4){
             layoutGenre.setBackgroundColor(R.drawable.img_bar_purple);
+            Bitmap bm4 = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_genre4);
+            showImageTest(bm4, iconImageView);
         }
-
-
-        // image example
-        if (iconUrl == null && genre==1){
-            Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hiphop);
-            showImageTest(bm, iconImageView);
-        }
-        else if (iconUrl == null && genre==2){
-            Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.img_hs);
-            showImageTest(bm, iconImageView);
-        }
-
+        
 
         nameTextView.setText(listViewItem.getName());
         titleTextView.setText(listViewItem.getTitle());

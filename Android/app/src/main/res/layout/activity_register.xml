@@ -110,6 +110,86 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="23dp"
+                        android:text="장르"
+                        android:paddingRight="10dp"
+                        android:textColor="#000000"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_centerInParent="true"
+                        android:background="#000000"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_genre1"
+                        android:layout_width="64dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/img_round_red_trans"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="노래"
+                        android:textColor="@color/colorMainGrayText"/>
+
+                    <Button
+                        android:id="@+id/btn_genre2"
+                        android:layout_width="64dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/img_round_yellow_trans"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="춤"
+                        android:textColor="@color/colorMainGrayText"/>
+
+                    <Button
+                        android:id="@+id/btn_genre3"
+                        android:layout_width="64dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/img_round_blue_trans"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="퍼포먼스"
+                        android:textColor="@color/colorMainGrayText"/>
+
+                    <Button
+                        android:id="@+id/btn_genre4"
+                        android:layout_width="64dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/img_round_purple_trans"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="기타"
+                        android:textColor="@color/colorMainGrayText"/>
+                    
+
+                </LinearLayout>
+
+                <!-- line -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="23dp"
                         android:text="정보"
                         android:paddingRight="10dp"
                         android:textColor="#000000"/>
@@ -160,7 +240,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/ic_menu_gallery"
+                            android:background="@drawable/ic_arrow"
                             />
 
                     </LinearLayout>
@@ -233,7 +313,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/ic_menu_gallery"
+                            android:background="@drawable/ic_arrow"
                             />
 
                     </LinearLayout>
@@ -309,7 +389,7 @@
                         <Button
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/ic_menu_gallery"
+                            android:background="@drawable/ic_arrow"
                             />
 
                     </LinearLayout>

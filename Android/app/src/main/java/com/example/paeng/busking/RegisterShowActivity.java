@@ -2,6 +2,7 @@ package com.example.paeng.busking;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,9 +37,11 @@ public class RegisterShowActivity extends AppCompatActivity {
     private CompositeSubscription mSubscriptions;
     EditText etName, etTitle, etDesc;
     TextView tvLocation, tvDate, tvTime;
+    Button btnGenre1, btnGenre2, btnGenre3, btnGenre4;
     Button btnRegister;
     LinearLayout llChooseLoc, llChooseDate, llChooseTime;
     String resultDate, resultTime;
+    private int selectedGenre = 0;
 
 
     @Override
@@ -65,6 +68,15 @@ public class RegisterShowActivity extends AppCompatActivity {
         etDesc = (EditText)findViewById(R.id.et_desc);
         btnRegister = (Button)findViewById(R.id.btn_register);
         mSubscriptions = new CompositeSubscription();
+        btnGenre1 = (Button)findViewById(R.id.btn_genre1);
+        btnGenre2 = (Button)findViewById(R.id.btn_genre2);
+        btnGenre3 = (Button)findViewById(R.id.btn_genre3);
+        btnGenre4 = (Button)findViewById(R.id.btn_genre4);
+        btnGenre1.setOnClickListener(genreListener);
+        btnGenre2.setOnClickListener(genreListener);
+        btnGenre3.setOnClickListener(genreListener);
+        btnGenre4.setOnClickListener(genreListener);
+
         btnRegister.setOnClickListener(new Button.OnClickListener(){
 
             @Override
@@ -76,7 +88,7 @@ public class RegisterShowActivity extends AppCompatActivity {
                     showTest.setShowName(etName.getText().toString());
                     showTest.setShowTitle(etTitle.getText().toString());
                     showTest.setShowLocation("홍대");
-                    showTest.setShowGenre(1);
+                    showTest.setShowGenre(selectedGenre);
                     showTest.setShowHeart(0);
                     showTest.setShowTime(resultDate+resultTime);
                     showTest.setShowDescription(etDesc.getText().toString());
@@ -165,6 +177,8 @@ public class RegisterShowActivity extends AppCompatActivity {
                 }
             };
         });
+
+
     }
 
     private void registerProgress(Show showDB) {
@@ -210,6 +224,9 @@ public class RegisterShowActivity extends AppCompatActivity {
         }else if (tvLocation.getText().toString().equals("위치를 선택해주세요!")){
             Toast.makeText(RegisterShowActivity.this, "위치를 입력해주세요!", Toast.LENGTH_LONG).show();
             return false;
+        }else if(selectedGenre == 0){
+            Toast.makeText(RegisterShowActivity.this, "장르를 선택해주세요!", Toast.LENGTH_LONG).show();
+            return false;
         }else if (tvDate.getText().toString().equals("날짜를 선택해 주세요!")) {
             Toast.makeText(RegisterShowActivity.this, "날짜를 선택해주세요!", Toast.LENGTH_LONG).show();
             return false;
@@ -230,6 +247,42 @@ public class RegisterShowActivity extends AppCompatActivity {
         super.onDestroy();
         mSubscriptions.unsubscribe();
     }
+
+    Button.OnClickListener genreListener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_genre1:
+                    selectedGenre = 1;
+                    btnGenre1.setBackground(getResources().getDrawable(R.drawable.img_round_red));
+                    btnGenre2.setBackground(getResources().getDrawable(R.drawable.img_round_yellow_trans));
+                    btnGenre3.setBackground(getResources().getDrawable(R.drawable.img_round_blue_trans));
+                    btnGenre4.setBackground(getResources().getDrawable(R.drawable.img_round_purple_trans));
+                    break;
+                case R.id.btn_genre2:
+                    selectedGenre = 2;
+                    btnGenre1.setBackground(getResources().getDrawable(R.drawable.img_round_red_trans));
+                    btnGenre2.setBackground(getResources().getDrawable(R.drawable.img_round_yellow));
+                    btnGenre3.setBackground(getResources().getDrawable(R.drawable.img_round_blue_trans));
+                    btnGenre4.setBackground(getResources().getDrawable(R.drawable.img_round_purple_trans));
+                    break;
+                case R.id.btn_genre3:
+                    selectedGenre = 3;
+                    btnGenre1.setBackground(getResources().getDrawable(R.drawable.img_round_red_trans));
+                    btnGenre2.setBackground(getResources().getDrawable(R.drawable.img_round_yellow_trans));
+                    btnGenre3.setBackground(getResources().getDrawable(R.drawable.img_round_blue));
+                    btnGenre4.setBackground(getResources().getDrawable(R.drawable.img_round_purple_trans));
+                    break;
+                case R.id.btn_genre4:
+                    selectedGenre = 4;
+                    btnGenre1.setBackground(getResources().getDrawable(R.drawable.img_round_red_trans));
+                    btnGenre2.setBackground(getResources().getDrawable(R.drawable.img_round_yellow_trans));
+                    btnGenre3.setBackground(getResources().getDrawable(R.drawable.img_round_blue_trans));
+                    btnGenre4.setBackground(getResources().getDrawable(R.drawable.img_round_purple));
+                    break;
+            }
+        }
+    };
 
     private void registerProgressInnerDB(Show showDB){
 
